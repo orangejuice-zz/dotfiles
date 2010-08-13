@@ -1,0 +1,229 @@
+*foreground: #BEBEBE
+*background: #1C1C1C
+
+#
+!!black
+*color0 :   #222222
+*color8 :   #454545
+#
+!!red
+*color1 :   #E22A5B
+*color9 :   #F92672
+#
+!!green
+*color2 :   #84B81B
+*color10:   #A6C22E
+#
+!!yellow
+*color3 :   #FD971F
+*color11:   #FDD31F
+#
+!!blue
+*color4 :   #2B45D6
+*color12:   #4682B4
+#
+!!magenta
+*color5 :   #B770DB
+*color13:   #AE81FF
+#
+!!cyan
+*color6 :   #89b6e2
+*color14:   #46a4ff
+#
+!!white
+*color7:    #FFFFFF
+*color15:   #FFFFFF
+
+!!black
+!*color0: #222222
+!*color8: #454545
+!
+!!red
+!*color1: #9E5641
+!*color9: #CC896D
+!!green
+!*color2: #6C7E55
+!*color10: #7DB37D
+!!yellow
+!*color3: #CAAF2B
+!*color11: #BFB556
+!!blue
+!*color4: #7C9AA6
+!*color12: #8FADBF
+!!magenta
+!*color5: #956D9D
+!*color13: #C18FCB
+!!cyan
+!*color6: #4c8ea1
+!*color14: #6bc1d0
+!!white
+!*color7: #808080
+!*color15: #cdcdcd
+
+!*color0:  #333333
+!*color8:  #454545
+!red
+!*color1:  #8C4665
+!*color9:  #BF4D80
+!green
+!*color2:  #287373
+!*color10: #53A6A6
+!yellow
+!*color3:  #7C9AA6
+!*color11: #8FBCBF
+!!blue
+!*color4:  #395573
+!*color12: #477AB3
+!!magenta
+!*color5:  #5E468C
+!*color13: #7E62B3
+!!cyan
+!*color6:  #31658C
+!*color14: #6096BF
+!!white
+!*color7:  #808080
+!*color15: #B0B0B0
+
+!black
+!*color0: #1C1C1C
+!*color8: #4d4d4d
+!!red
+!*color1: #D81860
+!*color9: #F00060
+!!green
+!*color2: #B7CE42
+!*color10: #BDE077
+!!yellow
+!*color3: #FEA63C
+!*color11: #FFE863
+!!blue
+!*color4: #66AABB
+!*color12: #AACCBB
+!!cyan
+!*color6: #5E7175
+!*color14: #A3BABF
+!!white
+!*color7: #DDEEDD
+!*color15: #6C887A
+!!magenta
+!*color5: #B7416E
+!*color13: #BB4466
+
+! Oude meuk ----------------------------
+!*background:        #262729
+!*foreground:       #cacaca
+!!black
+!!*color0:           #1c1d1f
+!!*color0:           #0c0c0c
+!!*color8:           #505050
+!!red
+!*color1:           #b04020
+!*color9:           #dd4010
+!!green
+!*color2:           #afd700
+!*color10:          #daff30
+!!yellow
+!*color3:           #f7cf0a
+!*color11:          #fce70d
+!!blue
+!*color4:           #3060aa
+!*color12:          #6099dd
+!!magenta
+!*color5:           #d6156c
+!*color13:          #fe4365
+!!cyan
+!*color6:           #a0c2de
+!*color14:          #c9dee8
+!!white
+!*color7:           #808080
+!*color15:          #b0b0b0
+
+URxvt.perl-ext-common: ...,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.underlineURLs: true
+URxvt.perl-lib:             ~/.urxvt/
+URxvt.urlLauncher:          /usr/bin/firefox
+URxvt.matcher.button:       1
+URxvt.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt.title:            urxvt
+urxvt.buffered:            true
+!URxvt.font:                 xft:Proggytiny:antialias=true
+!URxvt*font:                -*-proggyoptis-medium-r-normal-*-10-*-*-*-*-*-*-*
+URxvt*font:                -*-proggyclean-medium-r-normal-*-*-*-*-*-*-*-*-*
+!URxvt*boldFont:            -*-proggyoptis-medium-r-bold-*-10-*-*-*-*-*-*-*
+URxvt.keysym.Control-Left:  \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+
+!URxvt*font:             xft:Terminus-8:antialias=false
+!URxvt*font:             xft:profont:pixelsize=11
+!urxvt*font:             -*-proggy-*-*-*-*-*-*-*-*-*-*-*-*
+!urxvt*boldFont:        xft:Terminus-8:antialias=false
+!urxvt*tintColor:        #7e7e7e
+URxvt.scrollBar:        False
+URxvt.saveLines:        6000
+URxvt.cursorBlink:      true
+URxvt.cursorColor:      #dcdccc
+!urxvt*borderLess:       true
+!urxvt*internalBorder:   0
+!urxvt.perl-ext-common:    default,matched,tabbed
+!urxvt*shading:            100
+!urxvt*inheritPixmap:    true
+
+!urxvt.transparent:        true
+!urxvt*fading:            20
+
+! ---- xterm settings ---- !
+
+xterm*faceName:          Terminus
+xterm*faceSize:          8
+!xterm*geometry:          84x20
+xterm*boldMode:          false
+xterm*cutNewline:        false
+xterm*on4Clicks:         group
+xterm*on5Clicks:         page
+xterm*internalBorder:    10
+xterm*background:        #222222
+xterm*foreground:        #a7a197
+xterm*metaSendsEscape:   true
+xterm*colorBD:           #ffffff
+xterm*colorBDMode:       true
+xterm*cursorBlink:       true
+xterm*cursorColor:       #505050
+xterm*veryBoldColors:    14
+xterm*loginShell:        true
+xterm*charClass:         33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48,58:48,63:48,61:48,44:48,38:48,59:48
+xterm*jumpScroll:        true
+xterm*multiScroll:       true
+!*background:   #222222
+!*background:    #141414
+!*foreground:    #dcdccc
+!*color0:        #141414
+!*color1:        #98565e
+!*color2:        #66825d
+!*color3:        #969176
+!*color4:        #4d6585
+!*color5:        #967395
+!*color6:        #5f7f7b
+!*color7:        #b3b3b3
+!*color8:        #737373
+!*color9:        #cfa3a9
+!*color10:       #caf7bb
+!*color11:       #fff8bc
+!*color12:       #83a3be
+!*color13:       #bba9cf
+!*color14:       #96cccc
+!*color15:       #ffffff
+
+xpdf*enableFreetype:        yes
+xpdf*antialias:             yes
+xpdf*foreground:            black
+xpdf*background:            white
+xpdf*urlCommand:            firefox %s
+xpdf*viKeys:                on
+
+Xft.dpi:                    96
+Xft.hintstyle:              hintslight
+Xft.autohinting:            1
+Xft.antialias:              1
+Xft.rgba:                   rgb
+Xft.lcdfilter:              lcddefault

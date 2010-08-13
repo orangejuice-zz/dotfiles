@@ -1,0 +1,33 @@
+#!/bin/sh
+
+#
+# ~/.xinitrc
+#
+# Executed by startx (run your window manager from here)
+#
+
+#Java crap
+export AWT_TOOLKIT=MToolkit
+
+#merge resources
+xrdb -merge ~/.Xdefaults
+
+#urxvtd
+urxvtd -q -o -f&
+
+#set wallpaper
+xsetroot -solid rgb:14/14/14 -cursor_name left_ptr
+feh --bg-tile ~/img/softandclean.png
+
+#set cursor
+xset r rate 200 50&
+xmodmap ~/.Xmodmap
+
+mpd ~/.mpd/config &
+mpdscribble
+
+#remove pointer if not needed
+#unclutter -idle 1 -jitter 80 &
+
+exec xmonad
+

@@ -1,0 +1,9 @@
+set pageinfo=gfm
+set defsearch=duckduckgo
+set complete=sbh
+set showstatuslinks=2
+set smartcase
+set newtab=all
+
+map J gt
+map K gT

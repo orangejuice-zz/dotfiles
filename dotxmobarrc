@@ -1,0 +1,15 @@
+Config { font           = "-*-proggyclean-medium-r-normal-*-*-*-*-*-*-*-*-*"
+       , bgColor        = "#1C1C1C"
+       , fgColor        = "#FFEEFF"
+       , position       = Bottom
+       , lowerOnStart   = True
+       , commands       = [ Run Battery ["BAT0"] 60
+                          , Run Date "%a %b %_d %Y" "date" 360
+                          , Run Date "%H:%M:%S" "time" 10
+                          , Run Com "sh" ["~/bin/mpd.sh"] "mpd" 10
+                          , Run StdinReader
+                          ]
+       , sepChar        = "%"
+       , alignSep       = "}{"
+       , template       = "%StdinReader% }{<fc=#7C9AA6>%mpd%</fc> | <fc=#7C9AA6>%battery%</fc> | <fc=#7C9AA6>%date%</fc> | <fc=#7C9AA6>%time%</fc>"
+       }
