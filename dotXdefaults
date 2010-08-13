@@ -1,38 +1,38 @@
 *foreground: #BEBEBE
 *background: #1C1C1C
 
-#
-!!black
-*color0 :   #222222
-*color8 :   #454545
-#
-!!red
-*color1 :   #E22A5B
-*color9 :   #F92672
-#
-!!green
-*color2 :   #84B81B
-*color10:   #A6C22E
-#
-!!yellow
-*color3 :   #FD971F
-*color11:   #FDD31F
-#
-!!blue
-*color4 :   #2B45D6
-*color12:   #4682B4
-#
-!!magenta
-*color5 :   #B770DB
-*color13:   #AE81FF
-#
-!!cyan
-*color6 :   #89b6e2
-*color14:   #46a4ff
-#
-!!white
-*color7:    #FFFFFF
-*color15:   #FFFFFF
+!#
+!!!black
+!*color0 :   #222222
+!*color8 :   #454545
+!#
+!!!red
+!*color1 :   #E22A5B
+!*color9 :   #F92672
+!#
+!!!green
+!*color2 :   #84B81B
+!*color10:   #A6C22E
+!#
+!!!yellow
+!*color3 :   #FD971F
+!*color11:   #FDD31F
+!#
+!!!blue
+!*color4 :   #2B45D6
+!*color12:   #4682B4
+!#
+!!!magenta
+!*color5 :   #B770DB
+!*color13:   #AE81FF
+!#
+!!!cyan
+!*color6 :   #89b6e2
+!*color14:   #46a4ff
+!#
+!!!white
+!*color7:    #FFFFFF
+!*color15:   #FFFFFF
 
 !!black
 !*color0: #222222
@@ -62,52 +62,52 @@
 
 !*color0:  #333333
 !*color8:  #454545
-!red
+!!red
 !*color1:  #8C4665
 !*color9:  #BF4D80
-!green
+!!green
 !*color2:  #287373
 !*color10: #53A6A6
-!yellow
+!!yellow
 !*color3:  #7C9AA6
 !*color11: #8FBCBF
-!!blue
+!!!blue
 !*color4:  #395573
 !*color12: #477AB3
-!!magenta
+!!!magenta
 !*color5:  #5E468C
 !*color13: #7E62B3
-!!cyan
+!!!cyan
 !*color6:  #31658C
 !*color14: #6096BF
-!!white
+!!!white
 !*color7:  #808080
 !*color15: #B0B0B0
 
 !black
-!*color0: #1C1C1C
-!*color8: #4d4d4d
-!!red
-!*color1: #D81860
-!*color9: #F00060
-!!green
-!*color2: #B7CE42
-!*color10: #BDE077
-!!yellow
-!*color3: #FEA63C
-!*color11: #FFE863
-!!blue
-!*color4: #66AABB
-!*color12: #AACCBB
-!!cyan
-!*color6: #5E7175
-!*color14: #A3BABF
-!!white
-!*color7: #DDEEDD
-!*color15: #6C887A
-!!magenta
-!*color5: #B7416E
-!*color13: #BB4466
+*color0: #1C1C1C
+*color8: #4d4d4d
+!red
+*color1: #D81860
+*color9: #F00060
+!green
+*color2: #B7CE42
+*color10: #BDE077
+!yellow
+*color3: #FEA63C
+*color11: #FFE863
+!blue
+*color4: #66AABB
+*color12: #AACCBB
+!cyan
+*color6: #5E7175
+*color14: #A3BABF
+!white
+*color7: #DDEEDD
+*color15: #6C887A
+!magenta
+*color5: #B7416E
+*color13: #BB4466
 
 ! Oude meuk ----------------------------
 !*background:        #262729
@@ -166,11 +166,11 @@ URxvt.cursorColor:      #dcdccc
 !urxvt*borderLess:       true
 !urxvt*internalBorder:   0
 !urxvt.perl-ext-common:    default,matched,tabbed
-!urxvt*shading:            100
+urxvt*shading:            60
 !urxvt*inheritPixmap:    true
 
-!urxvt.transparent:        true
-!urxvt*fading:            20
+urxvt.transparent:        true
+!urxvt*fading:            80
 
 ! ---- xterm settings ---- !
 

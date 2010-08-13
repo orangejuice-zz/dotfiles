@@ -34,7 +34,8 @@ setprompt () {
         #eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
         #eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
         eval PR_$color='%{$fg[${(L)color}]%}'
-        eval PR_LIGHT_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+        #eval PR_LIGHT_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+        eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
         (( count = $count + 1 ))
     done
     PR_NO_COLOUR="%{$terminfo[sgr0]%}"
@@ -68,6 +69,12 @@ setprompt () {
     esac
 
     # Finally, the prompt.
+#    if [[ $UID -eq 0 ]] ; then
+#        PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%# "
+#    else
+#        PROMPT="%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%# "
+#    fi
+
 
     PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
 $PR_LIGHT_BLUE$PR_SHIFT_IN$PR_ULCORNER$PR_LIGHT_BLUE$PR_HBAR$PR_SHIFT_OUT(\

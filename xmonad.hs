@@ -127,9 +127,9 @@ getHost = do
 -- {{{
 backGroundColor = "#1C1C1C"
 foreGroundColor = "#FFEEFF"
-greenColor      = "#6C7E55"
-blueColor       = "#7C9AA6"
-yellowColor     = "#CAAF2B"
+greenColor      = "#B7CE42"
+blueColor       = "#66AABB"
+yellowColor     = "#FEA63C"
 blackColor      = "#050505"
 -- }}}
 

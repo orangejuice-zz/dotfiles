@@ -11,5 +11,5 @@ Config { font           = "-*-proggyclean-medium-r-normal-*-*-*-*-*-*-*-*-*"
                           ]
        , sepChar        = "%"
        , alignSep       = "}{"
-       , template       = "%StdinReader% }{<fc=#7C9AA6>%mpd%</fc> | <fc=#7C9AA6>%battery%</fc> | <fc=#7C9AA6>%date%</fc> | <fc=#7C9AA6>%time%</fc>"
+       , template       = "%StdinReader% }{<fc=#66AABB>%mpd%</fc> | <fc=#66AABB>%battery%</fc> | <fc=#66AABB>%date%</fc> | <fc=#66AABB>%time%</fc>"
        }
