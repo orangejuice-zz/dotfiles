@@ -31,6 +31,17 @@ setopt hist_no_functions
 setopt no_hist_beep
 setopt hist_save_no_dups
 
+case $TERM in
+sun-cmd)
+precmd () { print -Pn "\e]l%~\e\\" }
+preexec () { print -Pn "\e]l%~\e\\" }
+;;
+*xterm*|rxvt|(dt|k|E)term|rxvt-unicode)
+precmd () { print -Pn "\e]2;%n@%m:%~\a" }
+preexec () { print -Pn "\e]2;%n@%m:%~\a" }
+;;
+esac
+
 . ~/.zshprompt
 setprompt
 

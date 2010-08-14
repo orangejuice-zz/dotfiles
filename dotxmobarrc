@@ -6,10 +6,9 @@ Config { font           = "-*-proggyclean-medium-r-normal-*-*-*-*-*-*-*-*-*"
        , commands       = [ Run Battery ["BAT0"] 60
                           , Run Date "%a %b %_d %Y" "date" 360
                           , Run Date "%H:%M:%S" "time" 10
-                          , Run Com "sh" ["~/bin/mpd.sh"] "mpd" 10
                           , Run StdinReader
                           ]
        , sepChar        = "%"
        , alignSep       = "}{"
-       , template       = "%StdinReader% }{<fc=#66AABB>%mpd%</fc> | <fc=#66AABB>%battery%</fc> | <fc=#66AABB>%date%</fc> | <fc=#66AABB>%time%</fc>"
+       , template       = "%StdinReader% }{ <fc=#66AABB>%battery%</fc> | <fc=#66AABB>%date%</fc> | <fc=#66AABB>%time%</fc>"
        }
