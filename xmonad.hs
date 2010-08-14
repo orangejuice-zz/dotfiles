@@ -237,11 +237,11 @@ myKeys host conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
         ] )
 
     , ((modMask,               xK_Down   ), case host of 
-                                                Whitehat -> spawn "ossmix vmix0-outvol -- -1"
+                                                Whitehat -> spawn "amixer -c 0 sset Master 2dB-"
                                                 Pinkhat  -> spawn "ossmix vmix0-outvol -- -1" 
                                                 _        -> spawn "" )
     , ((modMask,               xK_Up     ), case host of
-                                                Whitehat -> spawn "ossmix vmix0-outvol -- +1"
+                                                Whitehat -> spawn "amixer -c 0 sset Master 2dB+"
                                                 Pinkhat  -> spawn "ossmix vmix0-outvol -- +1" 
                                                 _        -> spawn "" )
                                                 
