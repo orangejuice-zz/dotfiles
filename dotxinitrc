@@ -17,14 +17,14 @@ urxvtd -q -o -f&
 
 #set wallpaper
 xsetroot -solid rgb:14/14/14 -cursor_name left_ptr
-feh --bg-tile ~/img/softandclean.png
+feh --bg-tile ~/img/rey.jpg
 
 #set cursor
 xset r rate 200 50&
 xmodmap ~/.Xmodmap
 
 mpd ~/.mpd/config &
-mpdscribble
+scrobby 
 
 #remove pointer if not needed
 #unclutter -idle 1 -jitter 80 &

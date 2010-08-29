@@ -70,7 +70,7 @@ myConfig = do
     withWindowNavigation ( xK_s, xK_h, xK_x, xK_l ) $ defaultConfig
         { borderWidth        = 1 
         , normalBorderColor  = blackColor
-        , focusedBorderColor = greenColor
+        , focusedBorderColor = magentaColor
         , workspaces         = myTopics
         , terminal           = myTerminal
         , modMask            = mod4Mask
@@ -95,7 +95,6 @@ myConfig = do
         , layoutHook        = avoidStruts
                             $ onWorkspace "dev" rtile 
                             $ onWorkspace "misc-term" rtile
-                            $ onWorkspace "irc" (smartBorders Full) 
                             $ onWorkspace "documents" rtile
                             $ onWorkspace "web" (smartBorders Full)
                             $ onWorkspace "music" (smartBorders Full)
@@ -123,12 +122,14 @@ getHost = do
 
 -- Colors
 -- {{{
-backGroundColor = "#1C1C1C"
-foreGroundColor = "#FFEEFF"
-greenColor      = "#B7CE42"
-blueColor       = "#66AABB"
-yellowColor     = "#FEA63C"
-blackColor      = "#050505"
+backGroundColor     = "#EAE7CB"
+darkBackGroundColor = "#BCB99E"
+foreGroundColor     = "#363636"
+greenColor          = "#767A5A"
+blueColor           = "#2567A4"
+yellowColor         = "#FF7106"
+blackColor          = "#000000"
+magentaColor        = "#AB1671"
 -- }}}
 
 -- Layouts
@@ -179,7 +180,7 @@ myTopicConfig = TopicConfig
                        >> spawn "geeqie -t ~/doc/cheatsheets/vim-cheat-sheet-2.png"
                        >> spawn "geeqie -t ~/doc/cheatsheets/git-cheat-sheet-medium.png" )
         , ("irc",         ssh "blackhat.endoftheinternet.org"                            )
-        , ("music",       spawnInShell "cmus"                                            )
+        , ("music",       spawnInShell "ncmpc -c"                                        )
         , ("web",         spawn myBrowser                                                )
         , ("movies",      spawnShellIn "/media/ssh/blackhat"                             )
         , ("dev",         spawnShellIn "~/src" >*> 3                                     )
@@ -368,5 +369,5 @@ stringTopics = map show myTopics
 topicSwitcher = zip stringTopics $ map (switchTopic myTopicConfig) myTopics
 
 myColorizer _ isFg | isFg      = return (greenColor,"black") 
-                   | otherwise = return (backGroundColor,foreGroundColor)
+                   | otherwise = return (darkBackGroundColor,foreGroundColor)
 --}}}
