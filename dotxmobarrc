@@ -1,6 +1,6 @@
-Config { font           = "xft:Consolas-10"
-       , bgColor        = "#EAE7CB"
-       , fgColor        = "#363636"
+Config { font           = "-*-proggyclean-medium-r-normal-*-*-*-*-*-*-*-*-*"
+       , bgColor        = "#363636"
+       , fgColor        = "#BEBEBE"
        , position       = Bottom
        , lowerOnStart   = True
        , commands       = [ Run Battery ["BAT0"] 60
@@ -10,5 +10,5 @@ Config { font           = "xft:Consolas-10"
                           ]
        , sepChar        = "%"
        , alignSep       = "}{"
-       , template       = "%StdinReader% }{ <fc=#2567A4>%battery%</fc> | <fc=#2567A4>%date%</fc> | <fc=#2567A4>%time%</fc>"
+       , template       = "%StdinReader% }{ <fc=#b8e346>%battery%</fc> | <fc=#b8e346>%date%</fc> | <fc=#b8e346>%time%</fc>"
        }

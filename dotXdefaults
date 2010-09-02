@@ -28,7 +28,8 @@ URxvt*background: rgba:0000/0000/0000/8888
 !*color7:     #d2d2d2
 !*color14:    #ffffff
 !#
-!!black
+
+!black
 *color0 :   #222222
 *color8 :   #454545
 #
@@ -41,16 +42,20 @@ URxvt*background: rgba:0000/0000/0000/8888
 *color10:   #A6C22E
 #
 !!yellow
-*color3 :   #FD971F
-*color11:   #FDD31F
+*color3 :   #FDF622
+*color11:   #FFC02F
 #
 !!blue
-*color4 :   #2B45D6
-*color12:   #4682B4
+*color4:    #478CD7
+*color12:   #6573FF
+!*color4 :   #2B45D6
+!*color12:   #4682B4
 #
 !!magenta
-*color5 :   #B770DB
-*color13:   #AE81FF
+*color5:    #EE3A67
+*color13:   #AB1671
+!*color5 :   #B770DB
+!*color13:   #AE81FF
 #
 !!cyan
 *color6 :   #89b6e2
@@ -171,81 +176,22 @@ URxvt.perl-lib:             ~/.urxvt/
 URxvt.urlLauncher:          /usr/bin/firefox
 URxvt.matcher.button:       1
 URxvt.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-!URxvt.title:            urxvt
-!urxvt.buffered:            true
-!URxvt.font:                 xft:Proggytiny:antialias=true
-!URxvt*font:                -*-proggyoptis-medium-r-normal-*-10-*-*-*-*-*-*-*
-!URxvt*font:                -*-proggyclean-medium-r-normal-*-*-*-*-*-*-*-*-*
-!URxvt*font:                -*-proggyclean-medium-r-normal-*-12-*-*-*-*-*-*-*
-!URxvt*boldFont:            -*-proggyoptis-medium-r-bold-*-10-*-*-*-*-*-*-*
+URxvt.buffered:            true
 URxvt.keysym.Control-Left:  \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
 
-!URxvt*font:             xft:Terminus-8:antialias=false
-!URxvt*font:             xft:Consolas-9:antialias=true
-!URxvt*font:             xft:Monaco-10:antialias=true
-!URxvt*font:             xft:HeldustryFT:antialias=false
-!URxvt*font:             xft:profont:pixelsize=11
-!urxvt*font:             -*-proggy-*-*-*-*-*-*-*-*-*-*-*-*
-URxvt*font:        xft:MonteCarlo:antialias=false
-!urxvt*tintColor:        #7e7e7e
+!URxvt*font:            xft:Terminus-8:antialias=false
+URxvt*font:            -*-proggyclean-medium-r-normal-*-*-*-*-*-*-*-*-*
+!URxvt*font:            xft:Monaco-10:antialias=true
+!URxvt*font:            xft:HeldustryFT:antialias=false
+!URxvt*font:            xft:profont:pixelsize=11
+!urxvt*font:            -*-proggy-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt.Whitehat.font:    xft:Terminus-8:antialias=false
+URxvt.Pinkhat.font:     xft:MonteCarlo:antialias=false
 URxvt.scrollBar:        False
-!URxvt.saveLines:        6000
 URxvt.cursorBlink:      true
-!URxvt.cursorColor:      #dcdccc
-!urxvt*borderLess:       true
-!urxvt*internalBorder:   0
-!urxvt.perl-ext-common:    default,matched,tabbed
-!urxvt*shading:            20
-!urxvt*inheritPixmap:    true
-
-!urxvt.transparent:        true
-!urxvt*fading:            30
-!urxvt*shading:            60
 URxvt*inheritPixmap:    true
-URxvt*depth:           32
-
-! ---- xterm settings ---- !
-
-xterm*faceName:          Terminus
-xterm*faceSize:          8
-!xterm*geometry:          84x20
-xterm*boldMode:          false
-xterm*cutNewline:        false
-xterm*on4Clicks:         group
-xterm*on5Clicks:         page
-xterm*internalBorder:    10
-xterm*background:        #222222
-xterm*foreground:        #a7a197
-xterm*metaSendsEscape:   true
-xterm*colorBD:           #ffffff
-xterm*colorBDMode:       true
-xterm*cursorBlink:       true
-xterm*cursorColor:       #505050
-xterm*veryBoldColors:    14
-xterm*loginShell:        true
-xterm*charClass:         33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48,58:48,63:48,61:48,44:48,38:48,59:48
-xterm*jumpScroll:        true
-xterm*multiScroll:       true
-!*background:   #222222
-!*background:    #141414
-!*foreground:    #dcdccc
-!*color0:        #141414
-!*color1:        #98565e
-!*color2:        #66825d
-!*color3:        #969176
-!*color4:        #4d6585
-!*color5:        #967395
-!*color6:        #5f7f7b
-!*color7:        #b3b3b3
-!*color8:        #737373
-!*color9:        #cfa3a9
-!*color10:       #caf7bb
-!*color11:       #fff8bc
-!*color12:       #83a3be
-!*color13:       #bba9cf
-!*color14:       #96cccc
-!*color15:       #ffffff
+URxvt*depth:            32
 
 xpdf*enableFreetype:        yes
 xpdf*antialias:             yes
@@ -258,5 +204,5 @@ Xft.dpi:                    96
 Xft.hintstyle:              hintslight
 Xft.autohinting:            1
 Xft.antialias:              1
-!Xft.rgba:                   rgb
+Xft.rgba:                   rgb
 Xft.lcdfilter:              lcddefault

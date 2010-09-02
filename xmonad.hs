@@ -120,12 +120,11 @@ getHost = do
 
 -- Colors
 -- {{{
-backGroundColor     = "#EAE7CB"
-darkBackGroundColor = "#BCB99E"
-foreGroundColor     = "#363636"
-greenColor          = "#767A5A"
-blueColor           = "#2567A4"
-yellowColor         = "#FF7106"
+backGroundColor     = "#363636"
+foreGroundColor     = "#BEBEBE"
+greenColor          = "#b8e346"
+blueColor           = "#02a2ff"
+yellowColor         = "#FFa402"
 blackColor          = "#000000"
 magentaColor        = "#AB1671"
 -- }}}
@@ -373,5 +372,5 @@ stringTopics = map show myTopics
 topicSwitcher = zip stringTopics $ map (switchTopic myTopicConfig) myTopics
 
 myColorizer _ isFg | isFg      = return (greenColor,"black") 
-                   | otherwise = return (darkBackGroundColor,foreGroundColor)
+                   | otherwise = return (backGroundColor,foreGroundColor)
 --}}}
