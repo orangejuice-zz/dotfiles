@@ -52,6 +52,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
 import Data.Bits ((.|.))
+import Data.List (findIndex)
 import Data.Ratio
 import Graphics.X11                                                                                                    
 import System.IO
@@ -87,7 +88,7 @@ myConfig = do
 -- {{{
 
 myPP xmproc = dynamicLogWithPP $ xmobarPP
-                { ppCurrent = xmobarColor yellowColor "" . wrap "[" "]" 
+                { ppCurrent = xmobarColor lmagentaColor "" . wrap "[" "]" 
                 , ppLayout  = xmobarColor blueColor "" . 
                     ( \x -> case x of
                       "Hinted ResizableTall" -> "[^]"
@@ -127,6 +128,7 @@ blueColor           = "#02a2ff"
 yellowColor         = "#FFa402"
 blackColor          = "#000000"
 magentaColor        = "#AB1671"
+lmagentaColor       = "#EE3A67"
 -- }}}
 
 -- Layouts
@@ -135,7 +137,7 @@ magentaColor        = "#AB1671"
 myLayout    = avoidStruts
             $ onWorkspace "pdf" tabThat
             $ onWorkspace "cheatsheets" tabThat
-            $ rtile ||| HG.Grid False ||| tabThat ||| gridMaster
+            $ rtile ||| HG.Grid False ||| tabThat ||| gridMaster ||| threeSome
 
 rtile       = layoutHints ( ResizableTall 1 (3%100) (1/2) [] )
 threeSome   = layoutHints ( ThreeCol 1 (3%100) (1/2) ) -- lolwut
@@ -212,19 +214,11 @@ myAddedKeys host conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
     , ((modMask,               xK_equal  ), sendMessage Expand               )
     , ((modMask              , xK_g      ), promptedGoto                     )
     , ((modMask .|. shiftMask, xK_g      ), promptedShift                    )
-    , ((modMask              , xK_f      ), runSelectedAction mySmallGsConfig
-                                                topicSwitcher                )
-    , ((modMask              , xK_w      ), goto "web"                       )
-    , ((modMask              , xK_i      ), goto "irc"                       )
-    , ((modMask              , xK_d      ), goto "dev"                       )
-    , ((modMask              , xK_t      ), goto "terms"                     )
+    , ((modMask              , xK_f      ), topicGridSelect                  )
     , ((modMask              , xK_r      ), currentTopicAction myTopicConfig )
     , ((modMask,               xK_F1     ), shellPrompt promptConfig         )
     , ((modMask,               xK_F2     ), sshPrompt promptConfig           )
     , ((modMask,               xK_F3     ), manPrompt promptConfig           )
-    , ((modMask,               xK_n      ), appendFilePrompt promptConfig 
-                                                "~/doc/notes/notes" )
-
     , ((modMask,               xK_slash  ), submap . M.fromList $ 
         [ ((0, xK_g     ), promptSearchBrowser promptConfig myBrowser google    >> viewWeb )
         , ((0, xK_w     ), promptSearchBrowser promptConfig myBrowser wikipedia >> viewWeb )
@@ -263,27 +257,25 @@ myAddedKeys host conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
                                                 _        -> spawn "" )
     
     , ((modMask,               xK_m), submap . M.fromList $
-        [ ((0, xK_s     ), spawn "cmus-remote -s" )
-        , ((0, xK_p     ), spawn "cmus-remote -u" )
-        , ((0, xK_Right ), spawn "cmus-remote -n" )
-        , ((0, xK_Left  ), spawn "cmus-remote -r" )
-        , ((0, xK_r     ), spawn "cmus-remote -R" )
-        , ((0, xK_z     ), spawn "cmus-remote -S" )
-        , ((0, xK_m     ), goto "music"       )
+        [ ((0, xK_s     ), spawn "mpc stop"     )
+        , ((0, xK_p     ), spawn "mpc toggle"   )
+        , ((0, xK_Right ), spawn "mpc next"     )
+        , ((0, xK_Left  ), spawn "mpc previous" )
+        , ((0, xK_r     ), spawn "mpc repeat"   )
+        , ((0, xK_z     ), spawn "mpc random"   )
+        , ((0, xK_m     ), goto "music"         )
        ]
      )
     ]
 -- }}}
 
--- Websearches, workspace switcher 
+-- Websearches
 -- {{{
 viewWeb   = goto "web"
 cplusplus = searchEngine "cplusplus" "http://www.cplusplus.com/query/search.cgi?q="
 binsearch = searchEngine "binsearch" "http://www.binsearch.net/?q="
 archwiki  = searchEngine "archwiki"  "http://wiki.archlinux.org/index.php/?search="
 msdn      = searchEngine "msdn"      "http://social.msdn.microsoft.com/Search/en-US/?query="
-
-workspaceGridSelect = gridselect mySmallGsConfig <=< asks $ map (\x -> (x,x)) . workspaces . config
 -- }}}
 
 -- Theme configuration
@@ -306,14 +298,9 @@ promptConfig = defaultXPConfig { font        = "-*-proggyoptis-medium-r-normal-*
                                , fgHLight    = blueColor
                                , borderColor = greenColor }
 
-mySmallGsConfig = (buildDefaultGSConfig myColorizer)
-                                  { gs_cellheight = 50
-                                  , gs_cellwidth  = 100 }
 
-myLargeGsConfig = (buildDefaultGSConfig myColorizer) 
-                                  { gs_cellheight = 50
-                                  , gs_cellwidth  = 300 }
-
+myGsConfig = defaultGSConfig { gs_cellheight = 50
+                             , gs_cellwidth  = 100 }
 -- }}}
 
 -- Managehook
@@ -367,10 +354,7 @@ promptedShift :: X ()
 promptedShift = workspacePrompt promptConfig $ windows . W.shift
 
 stringTopics :: [String]
-stringTopics = map show myTopics
+stringTopics = map (takeWhile (/= '"') . tail . show) myTopics
 
-topicSwitcher = zip stringTopics $ map (switchTopic myTopicConfig) myTopics
-
-myColorizer _ isFg | isFg      = return (greenColor,"black") 
-                   | otherwise = return (backGroundColor,foreGroundColor)
+topicGridSelect = gridselect myGsConfig (zip stringTopics myTopics) >>= maybe (return ()) (switchTopic myTopicConfig)                  
 --}}}
