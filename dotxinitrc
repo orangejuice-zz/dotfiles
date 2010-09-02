@@ -22,9 +22,11 @@ feh --bg-tile ~/img/rey.jpg
 #set cursor
 xset r rate 200 50&
 xmodmap ~/.Xmodmap
+xcompmgr &
 
 mpd ~/.mpd/config &
 scrobby 
+
 
 #remove pointer if not needed
 #unclutter -idle 1 -jitter 80 &

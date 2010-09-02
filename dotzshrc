@@ -1,7 +1,5 @@
 # ZSHRC
 
-umask 002
-
 eval `dircolors -b`
 
 setopt autopushd pushdminus pushdsilent pushdtohome
@@ -16,8 +14,8 @@ setopt HIST_IGNORE_SPACE
 setopt SH_WORD_SPLIT
 setopt nohup
 
-HISTSIZE=100
-SAVEHIST=100
+HISTSIZE=5000
+SAVEHIST=1000
 HISTFILE=~/.zshhistory
 setopt append_history
 setopt inc_append_history
@@ -119,7 +117,7 @@ alias top=htop
 alias grep=egrep
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
-alias la='ls -a --color=auto'
+alias la='ls -al --color=auto'
 # List only directories and symbolic
 # links that point to directories
 alias lsd='ls -ld *(-/DN)'
@@ -149,6 +147,10 @@ ignore=(.o .c~ .old .cpp~)
 #zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion::complete:*' use-cache on
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 zstyle ':completion:*' format '%d:'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}

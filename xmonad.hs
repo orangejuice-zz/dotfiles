@@ -25,6 +25,7 @@ import qualified XMonad.Layout.HintedGrid as HG
 import XMonad.Layout.CenteredMaster
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Spiral
+import XMonad.Layout.Spacing
 
 import XMonad.Prompt            
 import XMonad.Prompt.Shell       
@@ -60,15 +61,14 @@ import System.Posix.Unistd
 
 -- Main configuration
 -- {{{
-main = do 
-    xmonad =<< myConfig
+main = xmonad =<< myConfig
 
 myConfig = do
     xmproc <- spawnPipe "xmobar"
     host <- getHost
     checkTopicConfig myTopics myTopicConfig
     withWindowNavigation ( xK_s, xK_h, xK_x, xK_l ) $ defaultConfig
-        { borderWidth        = 1 
+        { borderWidth        = 1
         , normalBorderColor  = blackColor
         , focusedBorderColor = magentaColor
         , workspaces         = myTopics
@@ -76,34 +76,32 @@ myConfig = do
         , modMask            = mod4Mask
         , focusFollowsMouse  = False
         , manageHook         = myManageHook <+> scratchpadManageHookDefault
-        , keys               = \c -> myKeys host c `M.union` (foldr M.delete (keys defaultConfig c) (myDeletedKeys c))
-        , logHook            = dynamicLogWithPP $ xmobarPP
-                                    { ppCurrent = xmobarColor yellowColor "" . wrap "[" "]" 
-                                    , ppLayout  = xmobarColor blueColor "" . 
-                                         ( \x -> case x of
-                                                "Hinted ResizableTall" -> "[^]"
-                                                "Tabbed Simplest"      -> "[T]"
-                                                "Grid"                 -> "[+]"
-                                                "Hinted ThreeCol"      -> "[3]"
-                                                "Grid False"           -> "[+]"
-                                                "Full"                 -> "[ ]"
-                                                _                      -> x
-                                         )
-                                    , ppOutput  = hPutStrLn xmproc
-                                    , ppTitle   = (\x -> "")
-                                    }
-        , layoutHook        = avoidStruts
-                            $ onWorkspace "dev" rtile 
-                            $ onWorkspace "misc-term" rtile
-                            $ onWorkspace "documents" rtile
-                            $ onWorkspace "web" (smartBorders Full)
-                            $ onWorkspace "music" (smartBorders Full)
-                            $ onWorkspace "movies" (smartBorders Full)
-                            $ onWorkspace "pdf" tabThat
-                            $ onWorkspace "cheatsheets" tabThat
-                            $ rtile ||| HG.Grid False ||| tabThat ||| gridMaster
+        , keys               = myKeys host 
+        , logHook            = myPP xmproc
+        , layoutHook         = myLayout
         } 
        
+-- }}}
+
+-- PP
+-- {{{
+
+myPP xmproc = dynamicLogWithPP $ xmobarPP
+                { ppCurrent = xmobarColor yellowColor "" . wrap "[" "]" 
+                , ppLayout  = xmobarColor blueColor "" . 
+                    ( \x -> case x of
+                      "Hinted ResizableTall" -> "[^]"
+                      "Tabbed Simplest"      -> "[T]"
+                      "Grid"                 -> "[+]"
+                      "Hinted ThreeCol"      -> "[3]"
+                      "Grid False"           -> "[+]"
+                      "Full"                 -> "[ ]"
+                      _                      -> x
+                    )
+                , ppOutput  = hPutStrLn xmproc
+                , ppTitle   = (\x -> "")
+                }
+
 -- }}}
 
 -- Host determination
@@ -135,10 +133,15 @@ magentaColor        = "#AB1671"
 -- Layouts
 -- {{{
 
-rtile      = layoutHints ( ResizableTall 1 (3%100) (1/2) [] )
-threeSome  = layoutHints ( ThreeCol 1 (3%100) (1/2) ) -- lolwut
-tabThat    = tabbedAlways shrinkText myTheme -- tap that??
-gridMaster = centerMaster Grid
+myLayout    = avoidStruts
+            $ onWorkspace "pdf" tabThat
+            $ onWorkspace "cheatsheets" tabThat
+            $ rtile ||| HG.Grid False ||| tabThat ||| gridMaster
+
+rtile       = layoutHints ( ResizableTall 1 (3%100) (1/2) [] )
+threeSome   = layoutHints ( ThreeCol 1 (3%100) (1/2) ) -- lolwut
+tabThat     = tabbedAlways shrinkText myTheme -- tap that??
+gridMaster  = centerMaster Grid
 
 -- }}}
 
@@ -172,7 +175,7 @@ myTopicConfig = TopicConfig
         , ("cheatsheets"    , "~/doc/cheatsheets"       )
         , ("office"         , "~/doc"                   )
         ]
-    , defaultTopicAction = const $ spawnShell >*> 3
+    , defaultTopicAction = const $ spawnShell >*> 2
     , defaultTopic = "web"
     , maxTopicHistory = 10
     , topicActions = M.fromList $
@@ -183,7 +186,7 @@ myTopicConfig = TopicConfig
         , ("music",       spawnInShell "ncmpc -c"                                        )
         , ("web",         spawn myBrowser                                                )
         , ("movies",      spawnShellIn "/media/ssh/blackhat"                             )
-        , ("dev",         spawnShellIn "~/src" >*> 3                                     )
+        , ("dev",         spawnShellIn "~/src" >*> 2                                     )
         , ("documents",   spawnShellIn "~/doc" >*> 2                                     )
         , ("pdf",         spawn "okular"                                                 ) 
         , ("office",      spawn "soffice"                                                )
@@ -194,12 +197,13 @@ myTopicConfig = TopicConfig
 
 -- Keys
 -- {{{
+myKeys host c = myAddedKeys host c `M.union` (foldr M.delete (keys defaultConfig c) (myDeletedKeys c))
 myDeletedKeys x =
     [ (modMask x,             xK_h)
     , (modMask x,             xK_l)  
     , (modMask x,             xK_s) ]
 
-myKeys host conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
+myAddedKeys host conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
     [ ((modMask,               xK_Return ), dwmpromote                       )
     , ((modMask,               xK_a      ), sendMessage MirrorExpand         )
     , ((modMask,               xK_z      ), sendMessage MirrorShrink         )
