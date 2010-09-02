@@ -22,9 +22,11 @@ feh --bg-tile ~/img/softandclean.png
 #set cursor
 xset r rate 200 50&
 xmodmap ~/.Xmodmap
+xcompmgr &
 
 mpd ~/.mpd/config &
 mpdscribble
+
 
 #remove pointer if not needed
 #unclutter -idle 1 -jitter 80 &

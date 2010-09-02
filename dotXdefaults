@@ -1,38 +1,63 @@
 *foreground: #BEBEBE
-*background: #1C1C1C
+!*background: #1C1C1C
+URxvt*background: rgba:0000/0000/0000/8888
 
+! Black 
+!*color0:     #404040
+!*color8:     #505050
+!! Red 
+!*color1:     #f03669
+!*color9:     #c75b79
+!! Green 
+!*color2:     #b8e346
+!*color10:    #c8e37e
+!! Yellow
+!*color3:     #ffa402
+!*color11:    #ffbe4a
+!! Blue 
+!*color4:     #02a2ff
+!*color12:    #71cbff
+!! Magenta 
+!*color5:     #875c8d
+!*color13:    #e41f66
+!! Cyan
+!*color6:     #6fa9d3
+!*color14:    #0078CE
+!! White 
+!*color7:     #d2d2d2
+!*color14:    #ffffff
 !#
-!!!black
-!*color0 :   #222222
-!*color8 :   #454545
-!#
-!!!red
-!*color1 :   #E22A5B
-!*color9 :   #F92672
-!#
-!!!green
-!*color2 :   #84B81B
-!*color10:   #A6C22E
-!#
-!!!yellow
-!*color3 :   #FD971F
-!*color11:   #FDD31F
-!#
-!!!blue
-!*color4 :   #2B45D6
-!*color12:   #4682B4
-!#
-!!!magenta
-!*color5 :   #B770DB
-!*color13:   #AE81FF
-!#
-!!!cyan
-!*color6 :   #89b6e2
-!*color14:   #46a4ff
-!#
-!!!white
-!*color7:    #FFFFFF
-!*color15:   #FFFFFF
+!!black
+*color0 :   #222222
+*color8 :   #454545
+#
+!!red
+*color1 :   #E22A5B
+*color9 :   #F92672
+#
+!!green
+*color2 :   #84B81B
+*color10:   #A6C22E
+#
+!!yellow
+*color3 :   #FD971F
+*color11:   #FDD31F
+#
+!!blue
+*color4 :   #2B45D6
+*color12:   #4682B4
+#
+!!magenta
+*color5 :   #B770DB
+*color13:   #AE81FF
+#
+!!cyan
+*color6 :   #89b6e2
+*color14:   #46a4ff
+#
+!!white
+*color7:    #FFFFFF
+*color15:   #FFFFFF
 
 !!black
 !*color0: #222222
@@ -85,29 +110,29 @@
 !*color15: #B0B0B0
 
 !black
-*color0: #1C1C1C
-*color8: #4d4d4d
-!red
-*color1: #D81860
-*color9: #F00060
-!green
-*color2: #B7CE42
-*color10: #BDE077
-!yellow
-*color3: #FEA63C
-*color11: #FFE863
-!blue
-*color4: #66AABB
-*color12: #AACCBB
-!cyan
-*color6: #5E7175
-*color14: #A3BABF
-!white
-*color7: #DDEEDD
-*color15: #6C887A
-!magenta
-*color5: #B7416E
-*color13: #BB4466
+!*color0: #1C1C1C
+!*color8: #4d4d4d
+!!red
+!*color1: #D81860
+!*color9: #F00060
+!!green
+!*color2: #B7CE42
+!*color10: #BDE077
+!!yellow
+!*color3: #FEA63C
+!*color11: #FFE863
+!!blue
+!*color4: #66AABB
+!*color12: #AACCBB
+!!cyan
+!*color6: #5E7175
+!*color14: #A3BABF
+!!white
+!*color7: #DDEEDD
+!*color15: #6C887A
+!!magenta
+!*color5: #B7416E
+!*color13: #BB4466
 
 ! Oude meuk ----------------------------
 !*background:        #262729
@@ -145,31 +170,32 @@ URxvt.perl-lib:             ~/.urxvt/
 URxvt.urlLauncher:          /usr/bin/firefox
 URxvt.matcher.button:       1
 URxvt.matcher.pattern.1:    \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-URxvt.title:            urxvt
-urxvt.buffered:            true
+!URxvt.title:            urxvt
+!urxvt.buffered:            true
 !URxvt.font:                 xft:Proggytiny:antialias=true
 !URxvt*font:                -*-proggyoptis-medium-r-normal-*-10-*-*-*-*-*-*-*
-URxvt*font:                -*-proggyclean-medium-r-normal-*-*-*-*-*-*-*-*-*
+!URxvt*font:                -*-proggyclean-medium-r-normal-*-12-*-*-*-*-*-*-*
 !URxvt*boldFont:            -*-proggyoptis-medium-r-bold-*-10-*-*-*-*-*-*-*
 URxvt.keysym.Control-Left:  \033[1;5D
 URxvt.keysym.Control-Right: \033[1;5C
 
 !URxvt*font:             xft:Terminus-8:antialias=false
+!URxvt*font:             xft:HeldustryFT:antialias=false
 !URxvt*font:             xft:profont:pixelsize=11
 !urxvt*font:             -*-proggy-*-*-*-*-*-*-*-*-*-*-*-*
-!urxvt*boldFont:        xft:Terminus-8:antialias=false
+URxvt*font:        xft:MonteCarlo:antialias=false
 !urxvt*tintColor:        #7e7e7e
 URxvt.scrollBar:        False
-URxvt.saveLines:        6000
+!URxvt.saveLines:        6000
 URxvt.cursorBlink:      true
-URxvt.cursorColor:      #dcdccc
+!URxvt.cursorColor:      #dcdccc
 !urxvt*borderLess:       true
 !urxvt*internalBorder:   0
 !urxvt.perl-ext-common:    default,matched,tabbed
-urxvt*shading:            60
-!urxvt*inheritPixmap:    true
-
-urxvt.transparent:        true
+!urxvt*shading:            60
+URxvt*inheritPixmap:    true
+URxvt*depth:           32
+!urxvt.transparent:        true
 !urxvt*fading:            80
 
 ! ---- xterm settings ---- !
@@ -225,5 +251,5 @@ Xft.dpi:                    96
 Xft.hintstyle:              hintslight
 Xft.autohinting:            1
 Xft.antialias:              1
-Xft.rgba:                   rgb
+!Xft.rgba:                   rgb
 Xft.lcdfilter:              lcddefault
