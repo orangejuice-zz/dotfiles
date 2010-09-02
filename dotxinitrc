@@ -17,7 +17,7 @@ urxvtd -q -o -f&
 
 #set wallpaper
 xsetroot -solid rgb:14/14/14 -cursor_name left_ptr
-feh --bg-tile ~/img/rey.jpg
+feh --bg-center ~/img/softandclean2.png
 
 #set cursor
 xset r rate 200 50&
