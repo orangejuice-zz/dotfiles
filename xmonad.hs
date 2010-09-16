@@ -133,7 +133,6 @@ lmagentaColor       = "#EE3A67"
 
 -- Layouts
 -- {{{
-
 myLayout    = avoidStruts
             $ onWorkspace "pdf" tabThat
             $ onWorkspace "cheatsheets" tabThat
@@ -208,6 +207,8 @@ myAddedKeys host conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
     [ ((modMask,               xK_Return ), dwmpromote                       )
     , ((modMask,               xK_a      ), sendMessage MirrorExpand         )
     , ((modMask,               xK_z      ), sendMessage MirrorShrink         )
+    , ((modMask,               xK_Right  ), spawn "xrandr -o normal"         )
+    , ((modMask,               xK_Left   ), spawn "xrandr -o left"           )
     , ((modMask,               xK_Delete ), kill                             )
     , ((modMask,               xK_0      ), toggleWS                         )
     , ((modMask,               xK_minus  ), sendMessage Shrink               )
@@ -215,6 +216,7 @@ myAddedKeys host conf@(XConfig { XMonad.modMask = modMask }) = M.fromList $
     , ((modMask              , xK_g      ), promptedGoto                     )
     , ((modMask .|. shiftMask, xK_g      ), promptedShift                    )
     , ((modMask              , xK_f      ), topicGridSelect                  )
+    , ((modMask .|. shiftMask, xK_f      ), topicGridSwitch                  )
     , ((modMask              , xK_r      ), currentTopicAction myTopicConfig )
     , ((modMask,               xK_F1     ), shellPrompt promptConfig         )
     , ((modMask,               xK_F2     ), sshPrompt promptConfig           )
@@ -356,5 +358,10 @@ promptedShift = workspacePrompt promptConfig $ windows . W.shift
 stringTopics :: [String]
 stringTopics = map (takeWhile (/= '"') . tail . show) myTopics
 
-topicGridSelect = gridselect myGsConfig (zip stringTopics myTopics) >>= maybe (return ()) (switchTopic myTopicConfig)                  
+topicGridSelect = topicGrid (switchTopic myTopicConfig)
+topicGridSwitchGoto = topicGrid (\x -> (windows $ W.shift x) >> (goto x))
+topicGridSwitch = topicGrid (windows . W.shift) 
+
+topicGrid x = do grid <- gridselect myGsConfig (zip stringTopics myTopics)
+                 maybe (return ()) x grid
 --}}}
