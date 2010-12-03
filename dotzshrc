@@ -1,7 +1,5 @@
 # ZSHRC
 
-eval `dircolors -b`
-
 setopt autopushd pushdminus pushdsilent pushdtohome
 setopt autocd
 setopt cdablevars
@@ -100,8 +98,8 @@ alias x="exit"
 alias l='ls -CF'
 alias cd..='cd ..'
 alias ...='cd ../..'
-alias ssh='ssh -2'
 alias pa='ps aux'
+alias blackhat='ssh raku@blackhat.endoftheinternet.org'
 alias vi='vim -c ":cd %:p:h"'
 alias mc='mc -bs'
 alias cdc='cd ~; clear'
@@ -115,17 +113,6 @@ alias d='dirs -v'
 alias h=history
 alias top=htop
 alias grep=egrep
-alias ls='ls --color=auto'
-alias ll='ls -lh --color=auto'
-alias la='ls -al --color=auto'
-# List only directories and symbolic
-# links that point to directories
-alias lsd='ls -ld *(-/DN)'
-# List only file beginning with "."
-alias lsa='ls -ld .*'
-# web cat
-alias wcat='wget -q -O -'
-alias dog=wcat
 
 # Global aliases -- These do not have to be
 # at the beginning of the command line.
